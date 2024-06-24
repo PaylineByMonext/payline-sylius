@@ -1,0 +1,27 @@
+sylius_payment:
+    gateways:
+        monext: Monext
+
+winzou_state_machine:
+    sylius_order_shipping:
+        callbacks:
+            after:
+                monext_shipping_processor:
+                    on:   []
+                    do:   ['@MonextSyliusPlugin\Winzou\ShippingProcessor', 'capture']
+                    args: ['object', 'event']
+    sylius_payment:
+        callbacks:
+            before:
+                monext_complete_processor:
+                    on:   ['complete']
+                    do:   ['@MonextSyliusPlugin\Winzou\CompleteProcessor', 'complete']
+                    args: ['object', 'event']
+                monext_cancel_processor:
+                    on:   ['cancel']
+                    do:   ['@MonextSyliusPlugin\Winzou\CancelProcessor', 'cancel']
+                    args: ['object']
+                monext_refund_processor:
+                    on: ['refund']
+                    do: ['@MonextSyliusPlugin\Winzou\RefundProcessor', 'refund']
+                    args: ['object', 'event']

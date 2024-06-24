@@ -1,0 +1,22 @@
+monext:
+    messages:
+        create_session_error: "An error occurred while preparing your payment. Please try again."
+    form:
+        api_key: "API Key"
+        environment:
+            label: "Environment"
+            values:
+                production: "Production"
+                homologation: "Homologation"
+        point_of_sale: "Point of sale"
+        contracts_numbers:
+            label: "Contracts numbers"
+            description: "List of contracts numbers, separated by commas"    
+        capture_type:
+            label: "Capture type"
+            values:
+                automatic: "Automatic (on checkout)"
+                manual: "Manual (on shipping)"
+        manual_capture_transition:
+            label: "Transition for manual capture"
+            description: "List of shipping state transitions triggering a payment capture if the capture type is 'Manual'. (Default value: ship)"

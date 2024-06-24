@@ -1,0 +1,44 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        bind:
+            bool $unsecuredUrls: '%env(bool:SYLIUS_UNSECURED_URLS)%'
+        
+    MonextSyliusPlugin\:
+        resource: '../../'
+        exclude: '../../{Resources,DependencyInjection,MonextSyliusPlugin.php,Payum/MonextApi.php,Payum/Action/StatusAction.php}'
+
+    GuzzleHttp\Client: ~
+
+    monext_sylius_plugin.gateway_factory.monext:
+        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+        tags:
+            - { name: 'payum.gateway_factory_builder', factory: 'monext' }
+        arguments:
+            - 'MonextSyliusPlugin\Payum\MonextGatewayFactory'
+
+    MonextSyliusPlugin\Form\Type\MonextGatewayConfigurationType:
+        tags:
+            - { name: 'sylius.gateway_configuration_type', type: 'monext', label: 'Monext' }
+            - { name: 'form.type' }
+
+    MonextSyliusPlugin\Payum\Action\CaptureAction:
+        public: true
+        tags:
+            - { name: 'payum.action', factory: 'monext', alias: 'payum.action.capture' }
+    
+    MonextSyliusPlugin\Winzou\ShippingProcessor:
+        public: true
+        
+    MonextSyliusPlugin\Winzou\CompleteProcessor:
+        public: true
+    
+    MonextSyliusPlugin\Winzou\CancelProcessor: 
+        public: true
+        
+    MonextSyliusPlugin\Winzou\RefundProcessor:
+        public: true
+        
+

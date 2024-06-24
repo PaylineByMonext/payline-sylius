@@ -1,0 +1,7 @@
+monext_shop_notification:
+    path: /payment/monext/notification
+    controller: MonextSyliusPlugin\Controller\Shop\NotificationAction
+    
+monext_shop_return:
+    path: /payment/monext/return
+    controller: MonextSyliusPlugin\Controller\Shop\ReturnAction
