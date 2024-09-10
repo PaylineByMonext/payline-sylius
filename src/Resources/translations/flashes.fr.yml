@@ -1,0 +1,12 @@
+sylius:
+    payment:
+        failed: "Le paiement a échoué. Aucun montant n'a été débité."
+monext:
+    return:
+        not_found: "Ce paiement a déjà été traitée ou n'existe pas."
+        duplicate: "Il semble y avoir une erreur dans le traitement de votre paiement. Veuillez nous contacter."
+        unknown: "Une erreur s'est produite lors de la récupération des informations de commande. Veuillez vérifier dans quelques minutes dans votre historique de commande ou nous contacter."
+        in_progress: "Votre paiement est toujours en cours de traitement. Veuillez vérifier dans quelques minutes dans votre historique de commande ou nous contacter."
+        cancelled: "Votre paiement a été annulé. Veuillez nous contacter pour plus d'informations."
+        error: "Une erreur s'est produite lors du traitement de votre paiement."
+        refused: "Votre paiement a été refusé. Veuillez nous contacter pour plus d'informations."
